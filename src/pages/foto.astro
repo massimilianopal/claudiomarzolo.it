@@ -1,8 +1,389 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const galleries = [
+  {
+    title: "Quintetto Imago Feat. Claudio Marzolo “Cinema d’Ascolto – Ennio Morricone”",
+    subtitle: [
+      "Piazza San Franco – Francavilla al Mare (CH) 02/08/2021",
+      "Con la speciale partecipazione dell’oboista M° Carlo Romano",
+    ],
+    images: [
+      "claudio-marzolo-cinema-dascolto-ennio-morricone1-194x300.jpg",
+      "claudio-marzolo-cinema-dascolto-ennio-morricone2-300x194.jpg",
+      "claudio-marzolo-cinema-dascolto-ennio-morricone3-194x300.jpg",
+      "claudio-marzolo-cinema-dascolto-ennio-morricone4-300x194.jpg",
+      "claudio-marzolo-cinema-dascolto-ennio-morricone5-300x194.jpg",
+    ],
+  },
+  {
+    title: "L’Ensemble di fiati e contrabbasso del Conservatorio “G. Braga” di Teramo",
+    subtitle: [
+      "“Sala Mazzini di Teramo” – Teramo (TE) 23/12/2020",
+      "Gran Partita di Mozart e monologo di Vanessa Gravina",
+    ],
+    images: [
+      "claudio_marzolo_conservatorio_braga_teramo_1-300x169.jpg",
+      "claudio_marzolo_conservatorio_braga_teramo_2-300x169.jpg",
+      "claudio_marzolo_conservatorio_braga_teramo_3-300x169.jpg",
+    ],
+  },
+  {
+    title: "Nuovo strumento magistralmente realizzato dal Liutaio Marco Nolli",
+    subtitle: ["Copia del contrabbasso Gaetano Rossi del 1847 realizzato nel 2019"],
+    images: [
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_1-300x300.jpg",
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_6-300x238.jpg",
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_5-300x300.jpg",
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_4-300x300.jpg",
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_2-300x300.jpg",
+      "claudio_marzolo_contrabbasso_marco_nolli_gaetano_rossi_1847_3-300x300.jpg",
+    ],
+  },
+  {
+    title: "Orchestra sinfonica “G. Braga”",
+    subtitle: ["Cattedrale di Teramo (TE) – 29/05/2019", "Direttore Luigi Piovano"],
+    images: [
+      "claudio_marzolo_orchestra_sinfonica_braga_luigi_piovano_2n-300x190.jpg",
+      "claudio_marzolo_orchestra_sinfonica_braga_luigi_piovano_2-300x190.jpg",
+      "claudio_marzolo_orchestra_sinfonica_braga_luigi_piovano_3-300x190.jpg",
+    ],
+  },
+  {
+    title: "Orchestra Sinfonica Giovanile Europea – Docente/Tutor",
+    subtitle: ["Vari concerti in Abruzzo – Luglio 2019"],
+    images: [
+      "claudio_marzolo_orchestra_sinfonica_giovanile_europea_3-300x194.jpg",
+      "claudio_marzolo_orchestra_sinfonica_giovanile_europea_2-194x300.jpg",
+      "claudio_marzolo_orchestra_sinfonica_giovanile_europea_1-300x194.jpg",
+    ],
+  },
+  {
+    title: "Vientovivo Spettacolo Musicale “…Da una Sevillana”",
+    subtitle: ["“Arena del Porto Turistico – Pescara (PE) 17/07/2018"],
+    images: [
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_1-300x200.jpg",
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_2-300x106.jpg",
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_3-300x200.jpg",
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_4-300x168.jpg",
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_5-300x168.jpg",
+      "claudio_marzolo_timeline_vientovivo_da_una_sevillana_pescara_6-300x168.jpg",
+    ],
+  },
+  {
+    title: "Timeline “Jazz & Wine”",
+    subtitle: ["Jazz club “Alla Bottega del Vino” – Perugia (PG) 11/04/2018"],
+    images: [
+      "claudio_marzolo_timeline_jazz_and_wine_perugia_3-300x225.jpg",
+      "claudio_marzolo_timeline_jazz_and_wine_perugia_2-225x300.jpg",
+      "claudio_marzolo_timeline_jazz_and_wine_perugia_1-300x225.jpg",
+    ],
+  },
+  {
+    title: "Lo Que Vendra’ Concerto “Che Tango” Festival Internazionale",
+    subtitle: ["“Rocca Costanza” – Pesaro (PS) 06/08/2016"],
+    images: [
+      "claudio_marzolo_che_tango_festival_1-300x169.jpg",
+      "claudio_marzolo_che_tango_festival_2-169x300.jpg",
+      "claudio_marzolo_che_tango_festival_3-300x169.jpg",
+    ],
+  },
+  {
+    title: "Opera Teatrale “Lo frate ‘nnamorato” G. B. Pergolesi",
+    subtitle: [
+      "“Largo San Nicola” – Guardiagrele (CH) 31/07/2016",
+      "Coordinatrice dell’ Opera Susanna Rigacci – Regia di Enzo Decaro",
+    ],
+    images: [
+      "claudio_marzolo_guardiagrele_1-300x174.jpg",
+      "claudio_marzolo_guardiagrele_2-300x174.jpg",
+      "claudio_marzolo_guardiagrele_3-300x174.jpg",
+      "claudio_marzolo_enzo_decaro_1-300x187.jpg",
+      "claudio_marzolo_enzo_decaro_3-300x188.jpg",
+      "claudio_marzolo_enzo_decaro_2-300x188.jpg",
+    ],
+  },
+  {
+    title: "Tholos Duo Spettacolo Musicale",
+    subtitle: ["“Teatro Marrucino” – Chieti (CH) 17/04/2016"],
+    images: [
+      "claudio_marzolo_tholos_1-300x200.jpg",
+      "claudio_marzolo_tholos_2-300x200.jpg",
+      "claudio_marzolo_tholos_3-300x200.jpg",
+      "claudio_marzolo_tholos_5-300x200.jpg",
+      "claudio_marzolo_tholos_4-200x300.jpg",
+      "claudio_marzolo_tholos_6-300x202.jpg",
+    ],
+  },
+  {
+    title: "Lo Que Vendra’ Spettacolo Teatrale “Revelación”",
+    subtitle: ["“Nuovo Teatro Verdi” – Brindisi (BR) 29/12/2015", "Bandoneon: Lisandro Adrover"],
+    images: [
+      "claudio-marzolo-lisandro-adrover-1-300x226.jpg",
+      "claudio-marzolo-lisandro-adrover-2-300x225.jpg",
+      "claudio-marzolo-lisandro-adrover-3-300x225.jpg",
+    ],
+  },
+  {
+    title: "Lo Que Vendrà Spettacolo Teatrale “Tanos en tango”",
+    subtitle: ["Teatro Sloveno – Trieste (TS) 19/12/2015"],
+    images: [
+      "claudio_marzolo_trieste_1-300x158.jpg",
+      "claudio_marzolo_trieste_2-300x178.jpg",
+      "claudio_marzolo_trieste_3-300x158.jpg",
+    ],
+  },
+  {
+    title: "Lo Que Vendra’ Concerto “In onore di Astor Piazzolla”",
+    subtitle: [
+      "“Teatro Alfieri” – Garfagnana (LC) 05/12/2015",
+      "Con la partecipazione di Laura Escalada Piazzolla moglie di A. Piazzolla",
+    ],
+    images: [
+      "claudio_marzolo_garfagnana_1-300x200.jpg",
+      "claudio_marzolo_garfagnana_2-300x200.jpg",
+      "claudio_marzolo_garfagnana_3-300x205.jpg",
+      "claudio_marzolo_laura_piazzolla_1-300x186.jpg",
+      "claudio_marzolo_laura_piazzolla_2-256x300.jpg",
+      "claudio_marzolo_laura_piazzolla_3-300x185.jpg",
+    ],
+  },
+  {
+    title: "Lo Que Vendra’ Spettacolo Teatrale “Anita Tango”",
+    subtitle: [
+      "“Teatro Sannazzaro” – Napoli (NA) 19/05/2014",
+      "Paroliere e Poeta: Horacio Ferrer, Voce: Guillermo Fernandez, Bandoneon: Lisandro Adrover",
+    ],
+    images: [
+      "claudio-marzolo-horacio-ferrer-1-300x191.jpg",
+      "claudio-marzolo-horacio-ferrer-2-300x191.jpg",
+      "claudio-marzolo-horacio-ferrer-3-300x191.jpg",
+    ],
+  },
+  {
+    title: "I Fiati Italiani / Quartetto Hedlund “XLV Stagione dei Concerti 2013/2014”",
+    subtitle: ["“Teatro Savoia” – Campobasso (CB) 07/12/2013"],
+    images: ["fiati_italiani1-302x170.jpg", "fiati_italiani2-204x300.jpg", "fiati_italiani4-302x170.jpg"],
+  },
+  {
+    title: "Amanda Sandrelli è “Oscar e la Dama in Rosa”",
+    subtitle: ["“Teatro De Micheli” – Copparo (FE) 22/03/2013"],
+    images: ["foto_sandrelli1-300x225.jpg", "foto_sandrelli2-225x300.jpg", "foto_sandrelli3-300x225.jpg"],
+  },
+  {
+    title: "Lo Que Vendra’ Spettacolo Teatrale “Anita Tango”",
+    subtitle: ["“Auditorium” Oscar Niemeyer – Ravello (SA) 29/12/2012"],
+    images: ["foto_loquevendra_2-300x169.jpg", "foto_loquevendra_3-300x168.jpg"],
+  },
+  {
+    title: "Lo Que Vendra’ Concerto",
+    subtitle: ["“Auditorium” – Baden Baden (Germania) 11/11/2012"],
+    images: ["foto_loquevendra_1-300x168.jpg", "claudio_marzolo_baden_baden-300x169.jpg"],
+  },
+  {
+    title: "Elio è Gian Burrasca “Tuscià Opera Festival”",
+    subtitle: ["“Piazza San Lorenzo” – Viterbo (VT) 05/08/2012", "Regista Lina Wertmüller"],
+    images: ["foto_elio1-300x224.jpg", "foto_elio2-225x300.jpg", "foto_elio3-300x273.jpg"],
+  },
+  {
+    title: "Lo Que Vendrà “Narnia Tango Festival”",
+    subtitle: ["Teatro Comunale Giuseppe Manini – Terni (TR) 14/07/2012"],
+    images: ["claudio_marzolo_narni_1-300x200.jpg", "claudio_marzolo_narni_2-300x200.jpg", "claudio_marzolo_narni_3-300x200.jpg"],
+  },
+  {
+    title: "Michele di Toro Quartett “XII Settimana Mozartiana”",
+    subtitle: ["“Piazza Porta Pescara” – Chieti 14/07/2011"],
+    images: [
+      "foto_michele_di_toro3-300x218.jpg",
+      "foto_michele_di_toro2-300x213.jpg",
+      "foto_michele_di_toro4-300x215.jpg",
+      "foto_michele_di_toro1-207x300.jpg",
+      "foto_michele_di_toro5-300x163.jpg",
+    ],
+  },
+  {
+    title: "Foto Varie",
+    subtitle: null,
+    images: [
+      "claudio_marzolo_varie_n_1-300x200.jpg",
+      "claudio_marzolo_varie_n_2-300x200.jpg",
+      "claudio_marzolo_varie_n_3-300x200.jpg",
+      "foto_varie1-300x200.jpg",
+      "foto_varie2-300x200.jpg",
+      "foto_varie4-300x224.jpg",
+    ],
+  },
+];
+
+function getDimensions(filename) {
+  const match = filename.match(/-(\\d+)x(\\d+)\\.(?:jpg|jpeg|png)$/i);
+  if (!match) return { width: 300, height: 200 };
+  return { width: Number(match[1]), height: Number(match[2]) };
+}
 ---
 
-<Layout title="Fotografie — Claudio Marzolo">
-  <h1>Fotografie</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+<BaseLayout>
+  <Fragment slot="title">Foto - </Fragment>
+
+  <article class="gallery">
+    <header class="gallery__head">
+      <h1 class="gallery__title">Galleria Fotografica</h1>
+      <hr class="gallery__rule" />
+    </header>
+
+    <figure class="gallery__hero">
+      <img
+        src="/img/header_foto.jpg"
+        alt=""
+        width="1272"
+        height="188"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    {galleries.map((section, idx) => {
+      const subtitle = Array.isArray(section.subtitle) ? section.subtitle : section.subtitle ? [section.subtitle] : [];
+      return (
+        <section class="block" aria-labelledby={`g-${idx}`}>
+          <header class="block__head">
+            <h2 id={`g-${idx}`} class="block__title">{section.title}</h2>
+            {subtitle.length > 0 && (
+              <div class="block__sub">
+                {subtitle.map((line) => (
+                  <p>{line}</p>
+                ))}
+              </div>
+            )}
+          </header>
+
+          <div class="grid" role="list">
+            {section.images.map((img) => {
+              const dim = getDimensions(img);
+              return (
+                <a class="frame" role="listitem" href={`/img/${img}`} target="_blank" rel="noreferrer">
+                  <img
+                    src={`/img/${img}`}
+                    alt=""
+                    width={dim.width}
+                    height={dim.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              );
+            })}
+          </div>
+
+          {idx < galleries.length - 1 && <hr class="block__rule" />}
+        </section>
+      );
+    })}
+  </article>
+
+  <style>
+    .gallery {
+      --accent: #a27e4f;
+      --paper: #f5f5f3;
+      --ink: #222;
+      --muted: #5c5c5c;
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .gallery__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .gallery__title {
+      margin: 0;
+    }
+
+    .gallery__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+
+    .gallery__hero {
+      margin: 1.75rem 0 2.25rem;
+    }
+
+    .gallery__hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    .block {
+      margin: 0;
+    }
+
+    .block__head {
+      text-align: center;
+      margin: 0 0 1.5rem;
+    }
+
+    .block__title {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    }
+
+    .block__sub {
+      margin-top: 0.65rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .block__sub p {
+      margin: 0.2rem 0;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 0 2rem;
+    }
+
+    .frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.55rem;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fff;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+      flex: 1 1 240px;
+      max-width: 320px;
+    }
+
+    .frame:hover {
+      transform: translateY(-1px);
+      border-color: rgba(162, 126, 79, 0.45);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+    }
+
+    .block__rule {
+      margin: 2rem auto 2.75rem;
+      border: none;
+      border-top: 1px solid #ddd;
+      max-width: 520px;
+    }
+  </style>
+</BaseLayout>

@@ -1,8 +1,167 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="Contatti — Claudio Marzolo">
-  <h1>Contatti</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+<BaseLayout title="Contatti" lang="it">
+  <article class="contact">
+    <header class="contact__head">
+      <h1 class="contact__title">Contatti</h1>
+      <hr class="contact__rule" />
+    </header>
+
+    <figure class="contact__hero frame">
+      <img
+        src="/img/header_contact2.jpg"
+        alt=""
+        width="1218"
+        height="180"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    <hr class="contact__divider" />
+
+    <section id="modulo" class="contact__details" aria-label="Dettagli contatto">
+      <div class="contact__row">
+        <a
+          class="contact__link"
+          href="https://www.facebook.com/claudio.marzolo.contrabbassista/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Seguimi su Facebook (apre in una nuova scheda)"
+        >
+          <span class="contact__icon" aria-hidden="true">f</span>
+          <span class="contact__text">
+            <strong>Seguimi su Facebook</strong>
+            <span class="contact__meta">news &amp; aggiornamenti</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="contact__row">
+        <span class="contact__mail">
+          <img
+            src="/img/mail-icon2.png"
+            alt=""
+            width="30"
+            height="30"
+            loading="lazy"
+            decoding="async"
+          />
+          <a href="mailto:marzoloclaudio@gmail.com">marzoloclaudio[@]gmail.com</a>
+        </span>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .contact {
+      margin: 0 auto;
+      max-width: 980px;
+      min-height: 55vh;
+    }
+
+    .contact__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .contact__title {
+      margin: 0;
+    }
+
+    .contact__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .contact__hero {
+      margin: 1.75rem 0 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    .contact__divider {
+      margin: 1.75rem 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .contact__details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 520px;
+    }
+
+    .contact__row {
+      display: flex;
+      align-items: center;
+    }
+
+    .contact__link {
+      display: flex;
+      gap: 0.65rem;
+      align-items: center;
+      text-decoration: none;
+      color: var(--ink, #222);
+    }
+
+    .contact__link:hover .contact__text strong {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    .contact__link:focus-visible {
+      outline: 2px solid rgba(162, 126, 79, 0.55);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
+    .contact__icon {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      background: #fff;
+      color: #1c3b73;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      line-height: 1;
+      border-radius: 2px;
+      user-select: none;
+    }
+
+    .contact__text {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .contact__meta {
+      color: var(--muted, #5c5c5c);
+      font-size: 0.88rem;
+    }
+
+    .contact__mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted, #5c5c5c);
+    }
+
+    .contact__mail a {
+      color: var(--accent, #a27e4f);
+      text-decoration: none;
+    }
+
+    .contact__mail a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+  </style>
+</BaseLayout>

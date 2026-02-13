@@ -1,0 +1,19 @@
+.prose {
+  max-width: 78ch;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.prose p { margin: 0 0 1.1rem; }
+
+.prose em { font-style: italic; }
+
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

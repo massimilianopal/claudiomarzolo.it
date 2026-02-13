@@ -1,8 +1,192 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="Biografia — Claudio Marzolo">
-  <h1>Biografia</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+<BaseLayout title="Biografia" lang="it">
+  <article class="bio">
+    <header class="bio__head">
+      <h1 class="bio__title">Biografia</h1>
+      <hr class="bio__rule" />
+    </header>
+
+    <figure class="bio__hero frame">
+      <img
+        src="/img/claudio_marzolo_biografia2.jpg"
+        alt=""
+        width="1050"
+        height="285"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    <section class="bio__lead prose" aria-label="Introduzione">
+      <p>
+        <em>
+          Colta, popolare, classica, jazz, sono termini spesso utilizzati nel linguaggio comune per denotare
+          un genere musicale. Il continuo evolversi del concetto di musica, fa sì che i confini
+          apparentemente netti tra i vari generi divengano sempre più indeterminati e per certi versi labili.
+          Il musicista contemporaneo, muovendosi costantemente lungo tali confini, può svolgere esperienze
+          artistiche molteplici ed arricchire il proprio bagaglio professionale.
+        </em>
+      </p>
+      <p>
+        <em>
+          Concerti in tutto il mondo, incisioni di cd musicali, insegnamento, master-Class, una vasta
+          attività editoriale nel campo didattico dedicata allo studio del contrabbasso e un'ampia lista di
+          collaborazioni di spessore, fanno di Claudio Marzolo un musicista e didatta di alto profilo.
+        </em>
+      </p>
+    </section>
+
+    <section class="bio__gallery" aria-label="Galleria">
+      <figure class="frame frame--wide">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-1-300x200.jpg"
+          alt=""
+          width="300"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <figure class="frame frame--tall">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-2-200x300.jpg"
+          alt=""
+          width="200"
+          height="300"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <figure class="frame frame--wide">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-3-300x200.jpg"
+          alt=""
+          width="300"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </section>
+
+    <section class="bio__body prose" aria-label="Testo">
+      <p>
+        Diplomato in Contrabbasso presso il Conservatorio "L. D'Annunzio" di Pescara, dopo aver svolto il
+        tirocinio, approfondisce e completa la propria preparazione musicale ed artistica attraverso corsi
+        di perfezionamento e di formazione orchestrali con importanti musicisti tra cui Dorin Marc, Libero
+        Lanzilotta, Victor Liberman, Donato Renzetti.
+      </p>
+
+      <p>
+        Intensa è la sua attività concertistica con formazioni cameristiche e sinfoniche, sia in Italia che
+        all'estero. La sua versatilità, l'esperienza, la formazione artistica e musicale gli hanno
+        consentito di esibirsi nei teatri e nelle sale più prestigiose di città come Toronto, Montreal,
+        Windsor, Ottawa, Hamilton, Niagara (Canada), Barcellona, Madrid, Cordoba, Paesi Baschi, Berlino,
+        Baden Baden, Willinghen, Stoccarda e con artisti di rilevanza internazionale tra cui Mischa Maisky,
+        Florian Zwiauer, Rocco Filippini, i Fiati del Teatro alla Scala di Milano.
+      </p>
+
+      <p>
+        Ha costituito e collaborato con vari gruppi di musica da camera del territorio.<br />
+        Ha conseguito la terza laurea di secondo livello in musica da camera presso il Conservatorio "G.
+        Braga" di Teramo.
+      </p>
+
+      <p>
+        Ha partecipato ad importanti Festival teatrali collaborando con artisti del panorama nazionale e
+        internazionale tra cui Alda Merini, Lina Wertmüller, Susanna Rigacci, Stefano Belisari, Laura
+        Escalada Piazzolla, Horacio Ferrer.
+      </p>
+
+      <p>
+        Pur restando profondamente legato al proprio percorso classico, nel corso degli anni, avverte
+        l'esigenza di scoprire nuovi linguaggi e nuovi generi musicali appassionandosi alla musica etnica,
+        latina e jazz che perfeziona partecipando a diversi seminari tra cui l' "International Workshop"
+        presso il Columbia College di Chicago diretta dal M° Bill Russo e conseguendo il Diploma in musica
+        jazz e la laurea di 2° livello presso il Conservatorio "l. Perosi" di Campobasso con il massimo dei
+        voti. Si è esibito in numerosi concerti, rassegne e festival internazionali tra i quali l'edizione
+        del XXXI Festival Internazionale "Pescara Jazz 2003", Toscana Jazz 2005, XXV Festival Internazionale
+        "Jazz In' Sardegna 2007" (Cagliari Jazz).
+      </p>
+
+      <p>
+        Ha all'attivo master-Class e incisioni di cd che spaziano dalla musica classica ai più diversi
+        generi musicali. L'esperienza didattica e la passione per lo strumento lo portano alla
+        realizzazione di testi sullo studio per l'intonazione e la pronuncia jazzistica con la
+        pubblicazione, nel 2019, dei primi volumi di "Double Bass Scales" Vol. 1°, Vol. 2° e di "Basic Jazz"
+        Vol. 1°, Vol. 2° che costituiscono una vera e propria collana didattica oltre che ad altre
+        pubblicazioni in qualità di coautore.
+      </p>
+
+      <p>
+        Attualmente è titolare di ruolo della cattedra di contrabbasso presso il Conservatorio di Musica
+        "Lorenzo Perosi" di Campobasso.
+      </p>
+
+      <p>
+        Si esibisce in teatri nazionali e internazionali con una copia del "Gaetano Rossi (1847)"
+        magistralmente realizzato dalla liuteria cremonese di Marco Nolli.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .bio {
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .bio__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .bio__title {
+      margin: 0;
+    }
+
+    .bio__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .bio__hero {
+      margin: 1.75rem 0 1.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .bio__lead {
+      margin: 0.75rem 0 2.25rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .bio__gallery {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2.25rem 0 2rem;
+    }
+
+    .bio__gallery .frame {
+      flex: 1 1 240px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bio__gallery .frame img {
+      max-width: 320px;
+    }
+
+    .frame--tall img {
+      max-width: 240px;
+    }
+  </style>
+</BaseLayout>
+

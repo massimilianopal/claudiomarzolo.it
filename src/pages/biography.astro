@@ -1,8 +1,191 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+<BaseLayout title="Biography" lang="en">
+  <article class="bio">
+    <header class="bio__head">
+      <h1 class="bio__title">Biography</h1>
+      <hr class="bio__rule" />
+    </header>
 
-<Layout title="Biography — Claudio Marzolo">
-  <h1>Biography</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+    <figure class="bio__hero frame">
+      <img
+        src="/img/claudio_marzolo_biografia2.jpg"
+        alt=""
+        width="1050"
+        height="285"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    <section class="bio__lead prose" aria-label="Introduction">
+      <p>
+        <em>
+          The phrases highbrow, popular, classical, jazz music are often used in the common language to
+          define a musical genre. The continuous development of the music concept, makes the boundaries
+          that separate the various musical genres looser and somehow more fleeting. The contemporary
+          musicians, moving steadily along these boundaries, can perform manifold artistic experiences and
+          enrich their own professional skills. Concerts all over the world, cd recordings, teaching
+          experience, master-Class, a broad editorial activity about the study of the double-bass and a
+          wide list of important contributions, that is what make Claudio Marzolo a musician and teacher
+          with a high level.
+        </em>
+      </p>
+    </section>
+
+    <section class="bio__gallery" aria-label="Gallery">
+      <figure class="frame frame--wide">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-1-300x200.jpg"
+          alt=""
+          width="300"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <figure class="frame frame--tall">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-2-200x300.jpg"
+          alt=""
+          width="200"
+          height="300"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <figure class="frame frame--wide">
+        <img
+          src="/img/claudio-marzolo-contrabbassista-biografia-3-300x200.jpg"
+          alt=""
+          width="300"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </section>
+
+    <section class="bio__body prose" aria-label="Text">
+      <p>
+        Graduated in Double Bass from the “L. D’Annunzio” Conservatory in Pescara, after completing his
+        internship, he deepened and completed his musical and artistic training through advanced courses
+        and orchestral training with renowned musicians such as Dorin Marc, Libero Lanzilotta, Victor
+        Liberman, and Donato Renzetti.
+      </p>
+
+      <p>
+        He has an extensive concert activity with chamber and symphonic ensembles, both in Italy and
+        abroad. His versatility, experience, and artistic and musical training have allowed him to perform
+        in prestigious theaters and venues in cities such as Toronto, Montreal, Windsor, Ottawa, Hamilton,
+        Niagara (Canada), Barcelona, Madrid, Cordoba, the Basque Country, Berlin, Baden-Baden, Willingen,
+        Stuttgart, and with internationally renowned artists including Mischa Maisky, Florian Zwiauer,
+        Rocco Filippini, and the Winds of La Scala in Milan.
+      </p>
+
+      <p>
+        He has formed and collaborated with various chamber music groups in the area. He holds a
+        third-level master’s degree in chamber music from the “G. Braga” Conservatory in Teramo.
+      </p>
+
+      <p>
+        He has participated in important theatrical festivals, collaborating with national and
+        international artists such as Alda Merini, Lina Wertmüller, Susanna Rigacci, Stefano Belisari,
+        Laura Escalada Piazzolla, and Horacio Ferrer.
+      </p>
+
+      <p>
+        While remaining deeply connected to his classical roots, over the years, he felt the need to
+        explore new languages and musical genres, developing a passion for ethnic, Latin, and jazz music.
+        He honed his skills by attending various seminars, including the “International Workshop” at
+        Columbia College in Chicago, directed by Maestro Bill Russo, earning a Diploma in Jazz Music and a
+        second-level degree from the “L. Perosi” Conservatory in Campobasso with top marks. He has
+        performed in numerous concerts, showcases, and international festivals, including the XXXI
+        International Festival “Pescara Jazz 2003,” Toscana Jazz 2005, and the XXV International Festival
+        “Jazz In Sardegna 2007” (Cagliari Jazz).
+      </p>
+
+      <p>
+        He has conducted masterclasses and released CDs spanning from classical music to various musical
+        genres. His teaching experience and passion for the instrument have led him to produce
+        instructional texts on tuning and jazz pronunciation, culminating in the publication in 2019 of
+        the first volumes of “Double Bass Scales” Vol. 1 and Vol. 2, and “Basic Jazz” Vol. 1 and Vol. 2,
+        which form a comprehensive teaching series, along with other publications as co-author.
+      </p>
+
+      <p>
+        He is currently a tenured professor of double bass at the “Lorenzo Perosi” Conservatory of Music in
+        Campobasso.
+      </p>
+
+      <p>
+        He performs in national and international theaters with a copy of the “Gaetano Rossi (1847)”
+        expertly crafted by the Cremonese luthier Marco Nolli.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .bio {
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .bio__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .bio__title {
+      margin: 0;
+    }
+
+    .bio__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .bio__hero {
+      margin: 1.75rem 0 1.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    .bio__lead {
+      margin: 0.75rem 0 2.25rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 1.02rem;
+    }
+
+    .bio__lead p {
+      margin: 0;
+    }
+
+    .bio__gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2.25rem 0 2rem;
+    }
+
+    .bio__gallery :global(.frame) {
+      flex: 1 1 240px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bio__gallery :global(.frame img) {
+      max-width: 320px;
+    }
+
+    .bio__gallery :global(.frame--tall img) {
+      max-width: 240px;
+    }
+  </style>
+</BaseLayout>

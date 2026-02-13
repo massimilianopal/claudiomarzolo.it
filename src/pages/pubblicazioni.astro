@@ -1,8 +1,427 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const publications = [
+  {
+    title: "Double Bass Scales Volume II Advanced",
+    cover: {
+      src: "/img/claudio_marzolo_pubblicazioni_double_bass_scales_advanced_volume_2-300x212.jpg",
+      width: 300,
+      height: 212,
+    },
+    comingSoon: true,
+  },
+  {
+    title: "Double Bass Scales Volume I Advanced",
+    cover: {
+      src: "/img/claudio_marzolo_pubblicazioni_double_bass_scales_advanced_volume_1-300x212.jpg",
+      width: 300,
+      height: 212,
+    },
+    description: [
+      "Questo testo, attraverso esercizi graduati e mirati consente di esercitare la mano, migliorare l'intonazione del proprio orecchio e sperimentare le molteplici possibilità espressive dello strumento con suoni di altezze diverse.",
+    ],
+    ean: "9788899843533",
+    audioRequest: true,
+  },
+  {
+    title: "Double Bass Arpeggios",
+    tagline: "Appendix to Double Bass Scales Advanced Volumes I and II",
+    cover: {
+      src: "/img/claudio_marzolo_pubblicazioni_double_bass_arpeggios_volume_2-300x212.jpg",
+      width: 300,
+      height: 212,
+    },
+    comingSoon: true,
+  },
+  {
+    title: "Double Bass Scales Volume II",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_double_bass_scales_volume_2-300x212.jpg", width: 300, height: 212 },
+    description: [
+      "Questo testo, attraverso la proposta di ascolto e di esercizi graduati, consente di migliorare l'intonazione del proprio orecchio e di sperimentare le molteplici possibilità espressive del basso e del contrabbasso con suoni di altezze diverse.",
+    ],
+    includesCd: true,
+    ean: "9788899843328",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Double-bass-scales-Vol-2/dp/8899843325/" },
+      { text: "IBS", href: "https://www.ibs.it/double-bass-scales-ediz-a-libro-claudio-marzolo/e/9788899843328" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/claudio-marzolo/double-bass-scales-ediz-a/9788899843328" },
+      { text: "Mondadori", href: "https://www.mondadoristore.it/Double-bass-scales-Ediz-Claudio-Marzolo/eai978889984332/" },
+    ],
+  },
+  {
+    title: "Double Bass Scales Volume I",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_double_bass_scales_volume_1-300x212.jpg", width: 300, height: 212 },
+    description: [
+      "Questo metodo costituisce un supporto pratico e semplice per coloro che si avvicinano per la prima volta o quasi allo studio del Contrabbasso.",
+    ],
+    includesCd: true,
+    ean: "9788899843281",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Double-bass-scales-CD-Audio-1/dp/8899843287" },
+      { text: "IBS", href: "https://www.ibs.it/double-bass-scales-con-cd-libro-claudio-marzolo/e/9788899843281" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/claudio-marzolo/double-bass-scales-cdaudio-vol/9788899843281" },
+    ],
+  },
+  {
+    title: "Double Bass Arpeggios",
+    tagline: "Appendix to Double Bass Scales Volumes I and II",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_double_bass_arpeggios-300x212.jpg", width: 300, height: 212 },
+    description: ["Questo metodo consente di esercitarsi sugli arpeggi di settima e migliorare l'intonazione dello strumento."],
+    includesCd: true,
+    ean: "9788899843403",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/arpeggios-species-seventh-chords-CD-Audio/dp/8899843406" },
+      { text: "IBS", href: "https://www.ibs.it/double-bass-arpeggios-on-triads-libro-claudio-marzolo/e/9788899843403" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/double-bass-arpeggios-on-triads/9788899843403" },
+      { text: "Mondadori", href: "https://www.mondadoristore.it/Double-bass-arpeggios-On-Claudio-Marzolo/eai978889984340/" },
+    ],
+  },
+  {
+    title: "Advanced Jazz Volume V",
+    tagline: "Exercises And Studies For Double Bass. Also For Electric Bass",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_advanced_jazz_volume_5-212x300.jpg", width: 212, height: 300 },
+    description: [
+      "Come indica il titolo, quest'opera è rivolta a coloro intendono acquisire una pronuncia musicale curata ed adeguata, di creare ed eseguire fraseggi sempre più complessi e di costruire melodie che abbiano senso compiuto contraddistinte da qualità ritmica.",
+    ],
+    ean: "9788899843540",
+  },
+  {
+    title: "Intermediate Jazz Volume IV",
+    tagline: "Exercises And Studies For Double Bass. Also For Electric Bass",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_intermediate_jazz_volume_4-212x300.jpg", width: 212, height: 300 },
+    description: [
+      "Questo testo propone esercizi graduati e progressivi per creare ed eseguire fraseggi sempre più complessi e costruire melodie di senso compiuto contraddistinte da qualità ritmica.",
+    ],
+    ean: "9788899843434",
+    audioRequest: true,
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Exercises-studies-double-elettric-scuola/dp/8899843430" },
+      { text: "IBS", href: "https://www.ibs.it/basic-jazz-exercises-and-studies-libro-claudio-marzolo/e/9788899843434" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/basic-jazz-exercises-and-studies/9788899843434" },
+    ],
+  },
+  {
+    title: "Intermediate Jazz Volume III",
+    tagline: "Exercises And Studies For Double Bass. Also For Electric Bass",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_intermediate_jazz_volume_3-212x300.jpg", width: 212, height: 300 },
+    description: [
+      "Questo volume consente di approfondire lo studio della pronuncia, della qualità ritmica del fraseggio e il linguaggio melodico comunemente utilizzati nel jazz.",
+    ],
+    ean: "9788899843427",
+    audioRequest: true,
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Basic-Exercises-studies-double-elettric/dp/8899843422" },
+      { text: "IBS", href: "https://www.ibs.it/basic-jazz-exercises-and-studies-libro-claudio-marzolo/e/9788899843427" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/basic-jazz-exercises-and-studies/9788899843427" },
+    ],
+  },
+  {
+    title: "Basic Jazz Volume II",
+    tagline: "Exercises And Studies For Double Bass. Also For Electric Bass",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_basic_jazz_volume_2-212x300.jpg", width: 212, height: 300 },
+    description: ["Questo testo, attraverso esercizi mirati e graduati, propone lo studio dei ritmi, delle articolazioni e dei fraseggi basilari utilizzati nel jazz."],
+    includesCd: true,
+    ean: "9788899843397",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Exercises-studies-double-elettric-CD-Audio/dp/8899843392" },
+      { text: "IBS", href: "https://www.ibs.it/basic-jazz-exercises-and-studies-libro-claudio-marzolo/e/9788899843397" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/claudio-marzolo/basic-jazz-exercises-and-studies/9788899843397" },
+    ],
+  },
+  {
+    title: "Basic Jazz Volume I",
+    tagline: "Exercises And Studies For Double Bass. Also For Electric Bass",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_basic_jazz_volume_1-212x300.jpg", width: 212, height: 300 },
+    description: [
+      "Questo metodo tecnico- pratico attraverso un approccio globale e graduale al contrabbasso e basso elettrico consente di accostarsi allo studio dei ritmi, delle articolazioni e dei fraseggi basilari di comune utilizzo nel jazz.",
+    ],
+    includesCd: true,
+    ean: "9788899843380",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Exercises-studies-double-elettric-CD-Audio/dp/8899843384/" },
+      { text: "IBS", href: "https://www.ibs.it/basic-jazz-exercises-and-studies-libro-claudio-marzolo/e/9788899843380" },
+      { text: "Feltrinelli", href: "https://www.lafeltrinelli.it/libri/claudio-marzolo/basic-jazz-exercises-and-studies/9788899843380" },
+      { text: "Mondadori", href: "https://www.mondadoristore.it/Basic-jazz-Exercises-and-Claudio-Marzolo/eai978889984338/" },
+    ],
+  },
+  {
+    title: "Cominciamo a girare",
+    tagline: "Metodo di musica d'insieme",
+    cover: { src: "/img/claudio_marzolo_pubblicazioni_cominciamo_a_girare_metodo_di_musica_dinsieme-212x300.jpg", width: 212, height: 300 },
+    ean: "9788899807573",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/Cominciamo-girare-Metodo-musica-dinsieme/dp/8899807574/" },
+      { text: "IBS", href: "https://www.ibs.it/cominciamo-a-girare-metodo-di-libro-vari/e/9788899807573" },
+    ],
+  },
+  {
+    title: "Il quartetto di accompagnamento",
+    tagline: "Tecniche facili di formazione e d'insieme",
+    cover: { src: "/img/9788899807627_0_0_831_75-211x300.jpg", width: 211, height: 300 },
+    ean: "9788899807627",
+    purchase: [
+      { text: "Amazon", href: "https://www.amazon.it/quartetto-accompagnamento-Tecniche-formazione-dinsieme/dp/8899807620/r" },
+      { text: "IBS", href: "https://www.ibs.it/quartetto-di-accompagnamento-tecniche-facili-libro-vari/e/9788899807627" },
+    ],
+  },
+];
 ---
 
-<Layout title="Pubblicazioni — Claudio Marzolo">
-  <h1>Pubblicazioni</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+<BaseLayout title="Pubblicazioni" lang="it">
+  <article class="pubs">
+    <header class="pubs__head">
+      <h1 class="pubs__title">Pubblicazioni</h1>
+      <hr class="pubs__rule" />
+    </header>
+
+    <figure class="pubs__hero frame">
+      <img
+        src="/img/header_download.jpg"
+        alt=""
+        width="1218"
+        height="180"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="pubs__list">
+      {publications.map((pub, idx) => (
+        <section class="pub" aria-labelledby={`p-${idx}`}>
+          <a
+            class="pub__cover frame"
+            href={pub.cover.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${pub.title} (apri immagine)`}
+            title={`${pub.title}`}
+          >
+            <img
+              src={pub.cover.src}
+              alt=""
+              width={pub.cover.width}
+              height={pub.cover.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+
+          <div class="pub__content prose">
+            <header class="pub__top">
+              <h3 id={`p-${idx}`} class="pub__name">{pub.title}</h3>
+
+              {pub.comingSoon && (
+                <p class="pub__badge" aria-label="Prossima pubblicazione">
+                  Prossima pubblicazione
+                </p>
+              )}
+            </header>
+
+            {pub.tagline && <p class="pub__tagline">{pub.tagline}</p>}
+
+            {pub.description?.map((p) => (
+              <p>{p}</p>
+            ))}
+
+            {(pub.includesCd || pub.ean) && (
+              <p class="pub__meta">
+                {pub.includesCd && <span>Include CD</span>}
+                {pub.includesCd && pub.ean && <span class="sep">*</span>}
+                {pub.ean && <span>EAN: {pub.ean}</span>}
+              </p>
+            )}
+
+            {(pub.purchase?.length ?? 0) > 0 && (
+  <div class="pub__buy" aria-label="Link acquisto">
+    <span class="pub__buy-label">Link per acquistare:</span>
+    <ul class="pub__buy-list">
+      {pub.purchase!.map((l) => (
+        <li>
+          <a href={l.href} target="_blank" rel="noopener noreferrer">{l.text}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
+            {pub.audioRequest && (
+              <p class="pub__audio">
+                <a href="/contatti#modulo">Per questo volume puoi richiedere i file audio cliccando qui</a>
+              </p>
+            )}
+          </div>
+        </section>
+      ))}
+    </div>
+  </article>
+
+  <style>
+    .pubs {
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .pubs__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .pubs__title {
+      margin: 0;
+    }
+
+    .pubs__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .pubs__hero {
+      margin: 1.75rem 0 2.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    .pubs__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .pub {
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .pub:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .pub__cover {
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    }
+
+    .pub__cover:hover {
+      transform: translateY(-1px);
+      border-color: rgba(162, 126, 79, 0.45);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .pub__cover:focus-visible {
+      outline: 2px solid rgba(162, 126, 79, 0.55);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
+    .pub__cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .pub__top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .pub__name {
+      margin: 0;
+    }
+
+    .pub__badge {
+      margin: 0;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--muted, #5c5c5c);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .pub__tagline {
+      margin: 0.35rem 0 0.9rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 0.98rem;
+    }
+
+    .pub__meta {
+      margin-top: 1rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 0.95rem;
+    }
+
+    .sep {
+      margin: 0 0.4rem;
+    }
+
+    .pub__buy {
+      margin-top: 1rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 0.95rem;
+    }
+
+    .pub__buy-label {
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .pub__buy-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.75rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      vertical-align: baseline;
+    }
+
+    .pub__buy-list li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .pub__buy a,
+    .pub__audio a {
+      color: var(--accent, #a27e4f);
+      text-decoration: none;
+    }
+
+    .pub__buy a:hover,
+    .pub__audio a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    @media (max-width: 860px) {
+      .pub {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .pub__cover img {
+        max-width: 360px;
+      }
+
+      .pub__top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</BaseLayout>
+

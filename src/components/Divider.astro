@@ -1,0 +1,25 @@
+---
+const { variant = "classic-1", size = 24, opacity = 0.6 } = Astro.props;
+const src = `/ui/dividers/divider-${variant}.svg`;
+---
+
+<div class="divider" aria-hidden="true">
+  <span class="line"></span>
+  <img src={src} alt="" style={`height:${size}px;opacity:${opacity};`} loading="lazy" />
+  <span class="line"></span>
+</div>
+
+<style>
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 2.2rem 0;
+  }
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+  }
+</style>

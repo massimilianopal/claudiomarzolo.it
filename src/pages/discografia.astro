@@ -1,8 +1,389 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const albums = [
+  {
+    images: [
+      { src: "/img/cd12_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd12_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "VIENTOVIVO",
+    title: "VIENTOVIVO",
+    year: "2010",
+    genre: "ETNOJAZZ MEDITERRANEO",
+    credits: [
+      "Francesco Ciancetta (Chitarra Classia, Chitarra Acustica, Laud, Voce, Cori, Palmas)",
+      "Massimo Zagonari (Flauto, Sax soprano)",
+      "Claudio Marzolo (Basso elettrico)",
+      "Claudio Canzano (Batteria, Palmas, Cori)",
+    ],
+  },
+  {
+    images: [
+      { src: "/img/cd11_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd11_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "QUINTETTO LO QUE VENDRA'",
+    title: "A BAILAR",
+    year: "2010",
+    genre: "TANGO ARGENTINO",
+    credits: [
+      "Simone Marini (Bandoneon)",
+      "Daniela Fidanza (Pianoforte)",
+      "Mario Pace (Violino)",
+      "Giovanni Ciaffarini (Viola)",
+      "Claudio Marzolo (Contrabbasso)",
+      "Ruben Peloni (Voce)",
+    ],
+  },
+  {
+    images: [
+      { src: "/img/cd10_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd10_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "MAURIZIO DI FULVIO TRIO",
+    title: "ON THE WAY TO WONDERLAND",
+    year: "2008",
+    genre: "JAZZ",
+    credits: ["Maurizio di Fulvio (Chitarra)", "Claudio Marzolo (Contrabbasso)", "Marco Contento (Batteria)"],
+  },
+  {
+    images: [
+      { src: "/img/cd9_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd9_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "FUSION TRIO",
+    title: "LIEVEEMENTE",
+    year: "2008",
+    genre: "FUSION",
+    credits: [
+      "Cesare Chiacchiaretta (Fisarmonica)",
+      "Roberto De Grandis (Flauto)",
+      "Claudio Marzolo (Contrabbasso)",
+    ],
+  },
+  {
+    images: [
+      { src: "/img/cd8_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd8_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "ACCADEMIA STRUMENTALE VITTORIA DAVID",
+    title: "ROMANZE",
+    year: "2006",
+    genre: "ROMANZE",
+    credits: [
+      "Accademia Strumentale Italiana",
+      "Giuseppe Piccinino (Direttore)",
+      "Novella Bassano (Soprano)",
+      "Koi Watanabe (Tenore)",
+    ],
+  },
+  {
+    images: [
+      { src: "/img/cd7_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd7_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "I FIATI ITALIANI",
+    title: "J.TRIEBENSEE",
+    year: "2005",
+    genre: "DA CAMERA",
+    credits: ["I Fiati Italiani", "Maurizio Colasanti (Direttore)", "Ivana Francisci (Pianoforte)"],
+  },
+  {
+    images: [
+      { src: "/img/cd6_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd6_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "SERGIO RENDINE",
+    title: "PASSIO ET RESURRECTIO",
+    year: "2005",
+    genre: "CORALE/SACRO",
+    credits: ["Coro e Orchestra del Teatro", "Marrucino di Chieti", "Marzio Conti (Direttore)"],
+  },
+  {
+    images: [
+      { src: "/img/cd5_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd5_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "USCITA NORD",
+    title: "VIZI VEZI E VIRTU'",
+    year: "2002",
+    genre: "SWING",
+    credits: [
+      "Marco Bellisario (Voce)",
+      "Marcello Malatesta (Tastiere)",
+      "Cristiano Vetuschi (Chitarre)",
+      "Pierpaolo Pecoriello (Sassofoni)",
+      "Claudio Marzolo (Contrabbasso e Basso elettrico)",
+      "Sergio Malatesta (Batteria)",
+    ],
+  },
+  {
+    images: [
+      {
+        src: "/img/claudio-marzolo-discografia-pierpaolo-pecoriello-live-at-talia-theatre-cd-fronte.jpg",
+        width: 300,
+        height: 300,
+      },
+      {
+        src: "/img/claudio-marzolo-discografia-pierpaolo-pecoriello-live-at-talia-theatre-cd-retro.jpg",
+        width: 300,
+        height: 300,
+      },
+    ],
+    artist: "Pierpaolo Pecoriello Quartett",
+    title: "Live! At Talìa Theatre",
+    year: "2002",
+    genre: "JAZZ",
+    credits: [
+      "Pierpaolo Pecoriello Sassofoni e Flauto",
+      "Mauro Gallo Pianoforte",
+      "Claudio Marzolo Contrabbasso",
+      "Davide La Rovere Batteria e Vibrafono",
+    ],
+  },
+  {
+    images: [
+      { src: "/img/cd3_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd3_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "ORCHESTRA E CORO DELL' ATENEO",
+    title: "CONCERTO",
+    year: "2002",
+    genre: "SINFONICO CORALE",
+    credits: ["Orchestra dell' Università D' Annunzio", "Stefano Cutilli (Direttore)", "Antonella Trovarelli (Soprano)"],
+  },
+  {
+    images: [
+      { src: "/img/cd2_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd2_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "ORCHESTRA SINFONICA DI PESCARA",
+    title: "L'ABRUZZO SINFONICO",
+    year: "2001",
+    genre: "SINFONICO",
+    credits: ["Orchestra Sinfonica di Pescara", "Donato Renzetti (Direttore)"],
+  },
+  {
+    images: [
+      { src: "/img/cd1_1-300x300.jpg", width: 300, height: 300 },
+      { src: "/img/cd1_2-300x300.jpg", width: 300, height: 300 },
+    ],
+    artist: "QUINTETTO LATINO",
+    title: "L' ITALIA IN MUSICA",
+    year: "2000",
+    genre: "NAPOLETANO",
+    credits: [
+      "Stefania Caccavello (Voce)",
+      "Gianluca Ciampichetti (Pianoforte)",
+      "Fabrizio Bono (Violino)",
+      "Fabrizio Fabiano (Violoncello e Arrangiamenti)",
+      "Claudio Marzolo (Contrabbasso)",
+    ],
+  },
+];
 ---
 
-<Layout title="Discografia — Claudio Marzolo">
-  <h1>Discografia</h1>
-  <p>Contenuto in arrivo.</p>
-</Layout>
+<BaseLayout title="Discografia" lang="it">
+  <article class="disco">
+    <header class="disco__head">
+      <h1 class="disco__title">Discografia</h1>
+      <hr class="disco__rule" />
+    </header>
+
+    <figure class="disco__hero frame">
+      <img
+        src="/img/header_media2.jpg"
+        alt=""
+        width="1218"
+        height="180"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="disco__list">
+      {albums.map((a, idx) => (
+        <section class="album" aria-labelledby={`a-${idx}`}>
+          <div class="album__covers" aria-label="Copertine">
+            {a.images.map((img, i) => (
+              <a
+                class="album__cover frame"
+                href={img.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${a.title} (${i === 0 ? "fronte" : "retro"}) - apre immagine`}
+                title={`${a.title} (${i === 0 ? "fronte" : "retro"})`}
+              >
+                <img src={img.src} alt="" width={img.width} height={img.height} loading="lazy" decoding="async" />
+              </a>
+            ))}
+          </div>
+
+          <div class="album__content prose">
+            <h3 id={`a-${idx}`} class="album__title">{a.title}</h3>
+            <p class="album__artist">{a.artist}</p>
+
+            <p class="album__meta">
+              <span>{a.year}</span>
+              <span class="sep">*</span>
+              <span>{a.genre}</span>
+            </p>
+
+            {a.credits?.length > 0 && (
+              <ul class="album__credits">
+                {a.credits.map((c) => (
+                  <li>{c}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      ))}
+    </div>
+  </article>
+
+  <style>
+    .disco {
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .disco__head {
+      margin: 0.25rem 0 1.5rem;
+    }
+
+    .disco__title {
+      margin: 0;
+    }
+
+    .disco__rule {
+      margin: 1rem 0 0;
+      border: none;
+      border-top: 1px solid var(--line, #ddd);
+    }
+
+    .disco__hero {
+      margin: 1.75rem 0 2.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    .disco__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .album {
+      display: grid;
+      grid-template-columns: minmax(240px, 340px) 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .album:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .album__covers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .album__cover {
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    }
+
+    .album__cover:hover {
+      transform: translateY(-1px);
+      border-color: rgba(162, 126, 79, 0.45);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .album__cover:focus-visible {
+      outline: 2px solid rgba(162, 126, 79, 0.55);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
+    .album__cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .album__content {
+      margin: 0;
+    }
+
+    .album__title {
+      margin: 0;
+    }
+
+    .album__artist {
+      margin: 0.35rem 0 0.35rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .album__meta {
+      margin: 0.35rem 0 1rem;
+      color: var(--muted, #5c5c5c);
+      font-size: 0.95rem;
+    }
+
+    .sep {
+      margin: 0 0.4rem;
+    }
+
+    .album__credits {
+      margin: 0;
+      padding-left: 1.05rem;
+    }
+
+    .album__credits li {
+      margin: 0.35rem 0;
+    }
+
+    @media (max-width: 860px) {
+      .album {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .album__covers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
+      }
+
+      .album__cover img {
+        max-width: 240px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .album__covers {
+        grid-template-columns: 1fr;
+      }
+
+      .album__cover img {
+        max-width: 280px;
+      }
+    }
+  </style>
+</BaseLayout>
+
