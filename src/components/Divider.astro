@@ -1,25 +1,26 @@
 ---
-const { variant = "classic-1", size = 24, opacity = 0.6 } = Astro.props;
+interface Props {
+  variant?: string;
+  size?: number;
+  opacity?: number;
+  ornament?: boolean;
+  ornamentSymbol?: string;
+}
+
+const {
+  variant = "classic-1",
+  size = 24,
+  opacity = 0.6,
+  ornament = false,
+  ornamentSymbol = "❦",
+} = Astro.props;
+
 const src = `/ui/dividers/divider-${variant}.svg`;
 ---
 
-<div class="divider" aria-hidden="true">
-  <span class="line"></span>
-  <img src={src} alt="" style={`height:${size}px;opacity:${opacity};`} loading="lazy" />
-  <span class="line"></span>
+<div class:list={["divider", ornament && "divider--ornament"]} aria-hidden="true">
+  <span class="divider__line"></span>
+  <img class="divider__mark" src={src} alt="" style={`height:${size}px;opacity:${opacity};`} loading="lazy" />
+  {ornament && <span class="divider__ornament">{ornamentSymbol}</span>}
+  <span class="divider__line"></span>
 </div>
-
-<style>
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin: 2.2rem 0;
-  }
-
-  .line {
-    flex: 1;
-    height: 1px;
-    background: #ddd;
-  }
-</style>

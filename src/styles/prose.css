@@ -1,12 +1,39 @@
 .prose {
-  max-width: 78ch;
-  line-height: 1.75;
+  max-width: 76ch;
   color: var(--ink);
+  font-size: clamp(1.03rem, 0.97rem + 0.22vw, 1.12rem);
+  line-height: 1.8;
 }
 
-.prose p { margin: 0 0 1.1rem; }
+.prose > :first-child {
+  margin-top: 0;
+}
 
-.prose em { font-style: italic; }
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+.prose p {
+  margin: 0 0 1.15rem;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1.15rem;
+  padding-left: 1.1rem;
+}
+
+.prose li {
+  margin: 0.35rem 0;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose strong {
+  font-weight: 600;
+}
 
 .prose a {
   color: var(--accent);

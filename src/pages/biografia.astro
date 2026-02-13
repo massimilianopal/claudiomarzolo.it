@@ -3,13 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Biografia" lang="it">
-  <article class="bio">
-    <header class="bio__head">
-      <h1 class="bio__title">Biografia</h1>
-      <hr class="bio__rule" />
+  <article class="page bio-page">
+    <header class="page-head">
+      <h1>Biografia</h1>
+      <hr />
     </header>
 
-    <figure class="bio__hero frame">
+    <figure class="hero frame">
       <img
         src="/img/claudio_marzolo_biografia2.jpg"
         alt=""
@@ -20,7 +20,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       />
     </figure>
 
-    <section class="bio__lead prose" aria-label="Introduzione">
+    <section class="bio-page__lead prose" aria-label="Introduzione">
       <p>
         <em>
           Colta, popolare, classica, jazz, sono termini spesso utilizzati nel linguaggio comune per denotare
@@ -39,8 +39,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </p>
     </section>
 
-    <section class="bio__gallery" aria-label="Galleria">
-      <figure class="frame frame--wide">
+    <section class="bio-gallery" aria-label="Galleria">
+      <figure class="frame">
         <img
           src="/img/claudio-marzolo-contrabbassista-biografia-1-300x200.jpg"
           alt=""
@@ -50,7 +50,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           decoding="async"
         />
       </figure>
-      <figure class="frame frame--tall">
+      <figure class="frame">
         <img
           src="/img/claudio-marzolo-contrabbassista-biografia-2-200x300.jpg"
           alt=""
@@ -60,7 +60,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           decoding="async"
         />
       </figure>
-      <figure class="frame frame--wide">
+      <figure class="frame">
         <img
           src="/img/claudio-marzolo-contrabbassista-biografia-3-300x200.jpg"
           alt=""
@@ -72,7 +72,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </figure>
     </section>
 
-    <section class="bio__body prose" aria-label="Testo">
+    <section class="bio-page__body prose" aria-label="Testo">
       <p>
         Diplomato in Contrabbasso presso il Conservatorio "L. D'Annunzio" di Pescara, dopo aver svolto il
         tirocinio, approfondisce e completa la propria preparazione musicale ed artistica attraverso corsi
@@ -132,61 +132,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </p>
     </section>
   </article>
-
-  <style>
-    .bio {
-      margin: 0 auto;
-      max-width: 980px;
-    }
-
-    .bio__head {
-      margin: 0.25rem 0 1.5rem;
-    }
-
-    .bio__title {
-      margin: 0;
-    }
-
-    .bio__rule {
-      margin: 1rem 0 0;
-      border: none;
-      border-top: 1px solid var(--line, #ddd);
-    }
-
-    .bio__hero {
-      margin: 1.75rem 0 1.25rem;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-    }
-
-    .bio__lead {
-      margin: 0.75rem 0 2.25rem;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-
-    .bio__gallery {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 2.25rem 0 2rem;
-    }
-
-    .bio__gallery .frame {
-      flex: 1 1 240px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .bio__gallery .frame img {
-      max-width: 320px;
-    }
-
-    .frame--tall img {
-      max-width: 240px;
-    }
-  </style>
 </BaseLayout>
-

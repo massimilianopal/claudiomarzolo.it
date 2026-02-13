@@ -169,13 +169,13 @@ const publications = [
 ---
 
 <BaseLayout title="Pubblicazioni" lang="it">
-  <article class="pubs">
-    <header class="pubs__head">
-      <h1 class="pubs__title">Pubblicazioni</h1>
-      <hr class="pubs__rule" />
+  <article class="page pubs-page">
+    <header class="page-head">
+      <h1>Pubblicazioni</h1>
+      <hr />
     </header>
 
-    <figure class="pubs__hero frame">
+    <figure class="hero frame">
       <img
         src="/img/header_download.jpg"
         alt=""
@@ -186,242 +186,79 @@ const publications = [
       />
     </figure>
 
-    <div class="pubs__list">
-      {publications.map((pub, idx) => (
-        <section class="pub" aria-labelledby={`p-${idx}`}>
-          <a
-            class="pub__cover frame"
-            href={pub.cover.src}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${pub.title} (apri immagine)`}
-            title={`${pub.title}`}
-          >
-            <img
-              src={pub.cover.src}
-              alt=""
-              width={pub.cover.width}
-              height={pub.cover.height}
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
+    <div class="pubs-list">
+      {publications.map((pub, idx) => {
+        const purchaseLinks = pub.purchase ?? [];
 
-          <div class="pub__content prose">
-            <header class="pub__top">
-              <h3 id={`p-${idx}`} class="pub__name">{pub.title}</h3>
+        return (
+          <section class="pub-entry" aria-labelledby={`p-${idx}`}>
+            <a
+              class="pub-entry__cover frame"
+              href={pub.cover.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${pub.title} (apri immagine)`}
+              title={`${pub.title}`}
+            >
+              <img
+                src={pub.cover.src}
+                alt=""
+                width={pub.cover.width}
+                height={pub.cover.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
 
-              {pub.comingSoon && (
-                <p class="pub__badge" aria-label="Prossima pubblicazione">
-                  Prossima pubblicazione
+            <div class="pub-entry__content prose">
+              <header class="pub-entry__top">
+                <h3 id={`p-${idx}`}>{pub.title}</h3>
+
+                {pub.comingSoon && (
+                  <p class="pub-entry__badge" aria-label="Prossima pubblicazione">
+                    Prossima pubblicazione
+                  </p>
+                )}
+              </header>
+
+              {pub.tagline && <p class="pub-entry__tagline">{pub.tagline}</p>}
+
+              {pub.description?.map((p) => (
+                <p>{p}</p>
+              ))}
+
+              {(pub.includesCd || pub.ean) && (
+                <p class="pub-entry__meta">
+                  {pub.includesCd && <span>Include CD</span>}
+                  {pub.includesCd && pub.ean && <span class="pub-entry__sep">*</span>}
+                  {pub.ean && <span>EAN: {pub.ean}</span>}
                 </p>
               )}
-            </header>
 
-            {pub.tagline && <p class="pub__tagline">{pub.tagline}</p>}
+              {purchaseLinks.length > 0 && (
+                <div class="pub-entry__buy" aria-label="Link acquisto">
+                  <span>Link per acquistare: </span>
+                  <ul class="pub-entry__buy-list">
+                    {purchaseLinks.map((link) => (
+                      <li>
+                        <a href={link.href} target="_blank" rel="noopener noreferrer">
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-            {pub.description?.map((p) => (
-              <p>{p}</p>
-            ))}
-
-            {(pub.includesCd || pub.ean) && (
-              <p class="pub__meta">
-                {pub.includesCd && <span>Include CD</span>}
-                {pub.includesCd && pub.ean && <span class="sep">*</span>}
-                {pub.ean && <span>EAN: {pub.ean}</span>}
-              </p>
-            )}
-
-            {(pub.purchase?.length ?? 0) > 0 && (
-  <div class="pub__buy" aria-label="Link acquisto">
-    <span class="pub__buy-label">Link per acquistare:</span>
-    <ul class="pub__buy-list">
-      {pub.purchase!.map((l) => (
-        <li>
-          <a href={l.href} target="_blank" rel="noopener noreferrer">{l.text}</a>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
-
-
-            {pub.audioRequest && (
-              <p class="pub__audio">
-                <a href="/contatti#modulo">Per questo volume puoi richiedere i file audio cliccando qui</a>
-              </p>
-            )}
-          </div>
-        </section>
-      ))}
+              {pub.audioRequest && (
+                <p class="pub-entry__audio">
+                  <a href="/contatti#modulo">Per questo volume puoi richiedere i file audio cliccando qui</a>
+                </p>
+              )}
+            </div>
+          </section>
+        );
+      })}
     </div>
   </article>
-
-  <style>
-    .pubs {
-      margin: 0 auto;
-      max-width: 980px;
-    }
-
-    .pubs__head {
-      margin: 0.25rem 0 1.5rem;
-    }
-
-    .pubs__title {
-      margin: 0;
-    }
-
-    .pubs__rule {
-      margin: 1rem 0 0;
-      border: none;
-      border-top: 1px solid var(--line, #ddd);
-    }
-
-    .pubs__hero {
-      margin: 1.75rem 0 2.25rem;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      background: #fff;
-    }
-
-    .pubs__list {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .pub {
-      display: grid;
-      grid-template-columns: minmax(220px, 340px) 1fr;
-      gap: 2rem;
-      align-items: start;
-      padding: 1.25rem 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .pub:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .pub__cover {
-      text-decoration: none;
-      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
-    }
-
-    .pub__cover:hover {
-      transform: translateY(-1px);
-      border-color: rgba(162, 126, 79, 0.45);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
-    }
-
-    .pub__cover:focus-visible {
-      outline: 2px solid rgba(162, 126, 79, 0.55);
-      outline-offset: 4px;
-      border-radius: 3px;
-    }
-
-    .pub__cover img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-
-    .pub__top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .pub__name {
-      margin: 0;
-    }
-
-    .pub__badge {
-      margin: 0;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      background: rgba(255, 255, 255, 0.7);
-      color: var(--muted, #5c5c5c);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .pub__tagline {
-      margin: 0.35rem 0 0.9rem;
-      color: var(--muted, #5c5c5c);
-      font-size: 0.98rem;
-    }
-
-    .pub__meta {
-      margin-top: 1rem;
-      color: var(--muted, #5c5c5c);
-      font-size: 0.95rem;
-    }
-
-    .sep {
-      margin: 0 0.4rem;
-    }
-
-    .pub__buy {
-      margin-top: 1rem;
-      color: var(--muted, #5c5c5c);
-      font-size: 0.95rem;
-    }
-
-    .pub__buy-label {
-      display: inline-block;
-      margin-right: 0.5rem;
-    }
-
-    .pub__buy-list {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.75rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      vertical-align: baseline;
-    }
-
-    .pub__buy-list li {
-      margin: 0;
-      padding: 0;
-    }
-
-    .pub__buy a,
-    .pub__audio a {
-      color: var(--accent, #a27e4f);
-      text-decoration: none;
-    }
-
-    .pub__buy a:hover,
-    .pub__audio a:hover {
-      text-decoration: underline;
-      text-underline-offset: 0.15em;
-    }
-
-    @media (max-width: 860px) {
-      .pub {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
-
-      .pub__cover img {
-        max-width: 360px;
-      }
-
-      .pub__top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
 </BaseLayout>
-

@@ -215,23 +215,21 @@ const galleries = [
   },
 ];
 
-function getDimensions(filename) {
-  const match = filename.match(/-(\\d+)x(\\d+)\\.(?:jpg|jpeg|png)$/i);
+function getDimensions(filename: string): { width: number; height: number } {
+  const match = filename.match(/-([0-9]+)x([0-9]+)\.(?:jpg|jpeg|png)$/i);
   if (!match) return { width: 300, height: 200 };
   return { width: Number(match[1]), height: Number(match[2]) };
 }
 ---
 
-<BaseLayout>
-  <Fragment slot="title">Foto - </Fragment>
-
-  <article class="gallery">
-    <header class="gallery__head">
-      <h1 class="gallery__title">Galleria Fotografica</h1>
-      <hr class="gallery__rule" />
+<BaseLayout title="Foto" lang="it">
+  <article class="page photo-page">
+    <header class="page-head">
+      <h1>Galleria Fotografica</h1>
+      <hr />
     </header>
 
-    <figure class="gallery__hero">
+    <figure class="hero frame">
       <img
         src="/img/header_foto.jpg"
         alt=""
@@ -245,11 +243,11 @@ function getDimensions(filename) {
     {galleries.map((section, idx) => {
       const subtitle = Array.isArray(section.subtitle) ? section.subtitle : section.subtitle ? [section.subtitle] : [];
       return (
-        <section class="block" aria-labelledby={`g-${idx}`}>
-          <header class="block__head">
-            <h2 id={`g-${idx}`} class="block__title">{section.title}</h2>
+        <section class="photo-block" aria-labelledby={`g-${idx}`}>
+          <header class="photo-block__head">
+            <h2 id={`g-${idx}`} class="photo-block__title">{section.title}</h2>
             {subtitle.length > 0 && (
-              <div class="block__sub">
+              <div class="photo-block__sub">
                 {subtitle.map((line) => (
                   <p>{line}</p>
                 ))}
@@ -257,11 +255,11 @@ function getDimensions(filename) {
             )}
           </header>
 
-          <div class="grid" role="list">
+          <div class="photo-grid" role="list">
             {section.images.map((img) => {
               const dim = getDimensions(img);
               return (
-                <a class="frame" role="listitem" href={`/img/${img}`} target="_blank" rel="noreferrer">
+                <a class="photo-frame frame" role="listitem" href={`/img/${img}`} target="_blank" rel="noreferrer">
                   <img
                     src={`/img/${img}`}
                     alt=""
@@ -275,115 +273,9 @@ function getDimensions(filename) {
             })}
           </div>
 
-          {idx < galleries.length - 1 && <hr class="block__rule" />}
+          {idx < galleries.length - 1 && <hr class="photo-block__rule" />}
         </section>
       );
     })}
   </article>
-
-  <style>
-    .gallery {
-      --accent: #a27e4f;
-      --paper: #f5f5f3;
-      --ink: #222;
-      --muted: #5c5c5c;
-      margin: 0 auto;
-      max-width: 980px;
-    }
-
-    .gallery__head {
-      margin: 0.25rem 0 1.5rem;
-    }
-
-    .gallery__title {
-      margin: 0;
-    }
-
-    .gallery__rule {
-      margin: 1rem 0 0;
-      border: none;
-      border-top: 1px solid #ddd;
-    }
-
-    .gallery__hero {
-      margin: 1.75rem 0 2.25rem;
-    }
-
-    .gallery__hero img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      background: #fff;
-    }
-
-    .block {
-      margin: 0;
-    }
-
-    .block__head {
-      text-align: center;
-      margin: 0 0 1.5rem;
-    }
-
-    .block__title {
-      margin: 0;
-      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
-    }
-
-    .block__sub {
-      margin-top: 0.65rem;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.98rem;
-    }
-
-    .block__sub p {
-      margin: 0.2rem 0;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: flex-start;
-      margin: 0 0 2rem;
-    }
-
-    .frame {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.55rem;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      background: #fff;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
-      text-decoration: none;
-      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
-      flex: 1 1 240px;
-      max-width: 320px;
-    }
-
-    .frame:hover {
-      transform: translateY(-1px);
-      border-color: rgba(162, 126, 79, 0.45);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
-    }
-
-    .frame img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: 300px;
-    }
-
-    .block__rule {
-      margin: 2rem auto 2.75rem;
-      border: none;
-      border-top: 1px solid #ddd;
-      max-width: 520px;
-    }
-  </style>
 </BaseLayout>

@@ -185,13 +185,13 @@ const albums = [
 ---
 
 <BaseLayout title="Discografia" lang="it">
-  <article class="disco">
-    <header class="disco__head">
-      <h1 class="disco__title">Discografia</h1>
-      <hr class="disco__rule" />
+  <article class="page disco-page">
+    <header class="page-head">
+      <h1>Discografia</h1>
+      <hr />
     </header>
 
-    <figure class="disco__hero frame">
+    <figure class="hero frame">
       <img
         src="/img/header_media2.jpg"
         alt=""
@@ -202,13 +202,13 @@ const albums = [
       />
     </figure>
 
-    <div class="disco__list">
+    <div class="album-list">
       {albums.map((a, idx) => (
-        <section class="album" aria-labelledby={`a-${idx}`}>
-          <div class="album__covers" aria-label="Copertine">
+        <section class="album-entry" aria-labelledby={`a-${idx}`}>
+          <div class="album-entry__covers" aria-label="Copertine">
             {a.images.map((img, i) => (
               <a
-                class="album__cover frame"
+                class="album-entry__cover frame"
                 href={img.src}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -220,18 +220,18 @@ const albums = [
             ))}
           </div>
 
-          <div class="album__content prose">
-            <h3 id={`a-${idx}`} class="album__title">{a.title}</h3>
-            <p class="album__artist">{a.artist}</p>
+          <div class="album-entry__content prose">
+            <h3 id={`a-${idx}`}>{a.title}</h3>
+            <p class="album-entry__artist">{a.artist}</p>
 
-            <p class="album__meta">
+            <p class="album-entry__meta">
               <span>{a.year}</span>
-              <span class="sep">*</span>
+              <span class="album-entry__sep">*</span>
               <span>{a.genre}</span>
             </p>
 
             {a.credits?.length > 0 && (
-              <ul class="album__credits">
+              <ul class="album-entry__credits">
                 {a.credits.map((c) => (
                   <li>{c}</li>
                 ))}
@@ -242,148 +242,4 @@ const albums = [
       ))}
     </div>
   </article>
-
-  <style>
-    .disco {
-      margin: 0 auto;
-      max-width: 980px;
-    }
-
-    .disco__head {
-      margin: 0.25rem 0 1.5rem;
-    }
-
-    .disco__title {
-      margin: 0;
-    }
-
-    .disco__rule {
-      margin: 1rem 0 0;
-      border: none;
-      border-top: 1px solid var(--line, #ddd);
-    }
-
-    .disco__hero {
-      margin: 1.75rem 0 2.25rem;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      background: #fff;
-    }
-
-    .disco__list {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .album {
-      display: grid;
-      grid-template-columns: minmax(240px, 340px) 1fr;
-      gap: 2rem;
-      align-items: start;
-      padding: 1.25rem 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .album:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .album__covers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      align-content: start;
-    }
-
-    .album__cover {
-      text-decoration: none;
-      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
-    }
-
-    .album__cover:hover {
-      transform: translateY(-1px);
-      border-color: rgba(162, 126, 79, 0.45);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
-    }
-
-    .album__cover:focus-visible {
-      outline: 2px solid rgba(162, 126, 79, 0.55);
-      outline-offset: 4px;
-      border-radius: 3px;
-    }
-
-    .album__cover img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .album__content {
-      margin: 0;
-    }
-
-    .album__title {
-      margin: 0;
-    }
-
-    .album__artist {
-      margin: 0.35rem 0 0.35rem;
-      color: var(--muted, #5c5c5c);
-      font-size: 0.98rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .album__meta {
-      margin: 0.35rem 0 1rem;
-      color: var(--muted, #5c5c5c);
-      font-size: 0.95rem;
-    }
-
-    .sep {
-      margin: 0 0.4rem;
-    }
-
-    .album__credits {
-      margin: 0;
-      padding-left: 1.05rem;
-    }
-
-    .album__credits li {
-      margin: 0.35rem 0;
-    }
-
-    @media (max-width: 860px) {
-      .album {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
-
-      .album__covers {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        justify-items: center;
-      }
-
-      .album__cover img {
-        max-width: 240px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .album__covers {
-        grid-template-columns: 1fr;
-      }
-
-      .album__cover img {
-        max-width: 280px;
-      }
-    }
-  </style>
 </BaseLayout>
-

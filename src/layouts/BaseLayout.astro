@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+import "../styles/prose.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -26,12 +28,9 @@ const fullTitle = title ? `${title} - Claudio Marzolo` : "Claudio Marzolo";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Cardo&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/prose.css" />
 
     <!-- opzionale: se hai la favicon -->
     <!-- <link rel="icon" href="/favicon.svg" /> -->
@@ -45,4 +44,3 @@ const fullTitle = title ? `${title} - Claudio Marzolo` : "Claudio Marzolo";
     <Footer />
   </body>
 </html>
-
