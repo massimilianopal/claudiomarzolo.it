@@ -1,3 +1,23 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer class="site-footer">
-  <p>Website by <a href="https://www.webbydesign.it" target="_blank" rel="noopener noreferrer">Webby Design</a></p>
+  <div class="site-footer__inner">
+    <p class="site-footer__copyright">
+      © {currentYear} Claudio Marzolo. Tutti i diritti riservati.
+    </p>
+
+    <p class="site-footer__legal">
+      I contenuti presenti su questo sito (testi, immagini, materiali audio e grafica)
+      non possono essere riprodotti, distribuiti o utilizzati senza autorizzazione scritta.
+    </p>
+
+    <p class="site-footer__credits">
+      Website by
+      <a href="https://www.webbydesign.it" target="_blank" rel="noopener noreferrer">
+        Webby Design
+      </a>
+    </p>
+  </div>
 </footer>

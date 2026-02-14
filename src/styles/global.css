@@ -20,6 +20,8 @@
   --space-3: 1.35rem;
   --space-4: 2rem;
   --space-5: 2.8rem;
+  --hero-gap-top: 1.75rem;
+  --hero-gap-bottom: 2.25rem;
 }
 
 * {
@@ -99,7 +101,7 @@ p {
 }
 
 .hero {
-  margin: 1.75rem 0 2.25rem;
+  margin: var(--hero-gap-top) 0 var(--hero-gap-bottom);
 }
 
 .hero img {
@@ -235,14 +237,40 @@ a.frame:focus-visible,
 }
 
 .site-footer {
+  margin-top: 5rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--line);
+  background: #eae3d9;
   text-align: center;
-  padding: 3rem 0;
-  font-size: 0.85rem;
-  color: var(--muted);
+  font-family: var(--font-body);
+}
+
+.site-footer__inner {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .site-footer p {
-  margin: 0;
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #444;
+}
+
+.site-footer__legal {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.site-footer a:hover {
+  border-bottom: 1px solid currentColor;
 }
 
 .divider {
@@ -280,10 +308,6 @@ a.frame:focus-visible,
 .home {
   max-width: var(--page);
   margin: 0 auto;
-}
-
-.home__hero {
-  margin: 1.35rem auto 2rem;
 }
 
 .home__manifesto {
