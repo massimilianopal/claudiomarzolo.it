@@ -172,7 +172,6 @@ const publications = [
   <article class="page pubs-page">
     <header class="page-head">
       <h1>Pubblicazioni</h1>
-
     </header>
 
     <figure class="hero">
@@ -192,14 +191,7 @@ const publications = [
 
         return (
           <section class="pub-entry" aria-labelledby={`p-${idx}`}>
-            <a
-              class="pub-entry__cover frame"
-              href={pub.cover.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${pub.title} (apri immagine)`}
-              title={`${pub.title}`}
-            >
+            <div class="pub-entry__cover frame" aria-hidden="true">
               <img
                 src={pub.cover.src}
                 alt=""
@@ -208,7 +200,7 @@ const publications = [
                 loading="lazy"
                 decoding="async"
               />
-            </a>
+            </div>
 
             <div class="pub-entry__content prose">
               <header class="pub-entry__top">

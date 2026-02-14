@@ -7,7 +7,6 @@ import Divider from "../components/Divider.astro";
   <article class="page equip-page">
     <header class="page-head">
       <h1>Equipment</h1>
-  
     </header>
 
     <figure class="hero">
@@ -22,17 +21,11 @@ import Divider from "../components/Divider.astro";
     </figure>
 
     <section class="equip-page__instruments" aria-label="Instruments">
-      <section class="equip-card" aria-label="Instrument made by Marco Nolli">
-        <h2 class="equip-card__title">Instrument made by Marco Nolli</h2>
-        <p class="equip-card__subtitle">Copy of the 1847 Gaetano Rossi double bass</p>
+      <section class="equip-card" aria-label="Strumento realizzato da Marco Nolli">
+        <h2 class="equip-card__title">Strumento realizzato da Marco Nolli</h2>
+        <p class="equip-card__subtitle">Copia del contrabbasso Gaetano Rossi del 1847</p>
 
-        <a
-          class="equip-card__frame frame"
-          href="/img/claudio_marzolo_strumento_marco_nolli.jpg"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open image: Instrument made by Marco Nolli"
-        >
+        <figure class="equip-card__frame frame">
           <img
             src="/img/claudio_marzolo_strumento_marco_nolli.jpg"
             alt=""
@@ -41,20 +34,14 @@ import Divider from "../components/Divider.astro";
             loading="lazy"
             decoding="async"
           />
-        </a>
+        </figure>
       </section>
 
-      <section class="equip-card" aria-label="Venetian lutherie instrument">
-        <h2 class="equip-card__title">Venetian lutherie instrument</h2>
-        <p class="equip-card__subtitle">Made in the early 1900s</p>
+      <section class="equip-card" aria-label="Strumento di liuteria veneta">
+        <h2 class="equip-card__title">Strumento di liuteria veneta</h2>
+        <p class="equip-card__subtitle">Realizzato all'inizio del 1900</p>
 
-        <a
-          class="equip-card__frame frame"
-          href="/img/contrabbasso_large.jpg"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open image: Venetian lutherie instrument"
-        >
+        <figure class="equip-card__frame frame">
           <img
             src="/img/contrabbasso_large.jpg"
             alt=""
@@ -63,7 +50,7 @@ import Divider from "../components/Divider.astro";
             loading="lazy"
             decoding="async"
           />
-        </a>
+        </figure>
       </section>
     </section>
 
@@ -83,13 +70,13 @@ import Divider from "../components/Divider.astro";
     </div>
 
     <section class="equip-page__grid" aria-label="Preamplifiers and microphones">
-      <a class="frame" href="/img/amek2_2.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open image: Amek preamp">
+      <figure class="frame equip-media">
         <img src="/img/amek2_2-666x375.jpg" alt="" width="666" height="375" loading="lazy" decoding="async" />
-      </a>
+      </figure>
 
-      <a class="frame" href="/img/micro_cond2.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open image: Condenser microphone">
+      <figure class="frame equip-media">
         <img src="/img/micro_cond2-666x375.jpg" alt="" width="666" height="375" loading="lazy" decoding="async" />
-      </a>
+      </figure>
     </section>
 
     <div class="equip-page__prose prose" aria-label="Additional information">
@@ -100,13 +87,7 @@ import Divider from "../components/Divider.astro";
     </div>
 
     <section class="equip-page__grid" aria-label="Custom device">
-      <a
-        class="frame"
-        href="/img/claudio-marzolo-sutera-sommatore.jpg"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open image: custom device (1)"
-      >
+      <figure class="frame equip-media">
         <img
           src="/img/claudio-marzolo-sutera-sommatore-666x375.jpg"
           alt=""
@@ -115,15 +96,9 @@ import Divider from "../components/Divider.astro";
           loading="lazy"
           decoding="async"
         />
-      </a>
+      </figure>
 
-      <a
-        class="frame"
-        href="/img/claudio-marzolo-sutera-sommatore-2.jpg"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open image: custom device (2)"
-      >
+      <figure class="frame equip-media">
         <img
           src="/img/claudio-marzolo-sutera-sommatore-2-666x375.jpg"
           alt=""
@@ -132,7 +107,7 @@ import Divider from "../components/Divider.astro";
           loading="lazy"
           decoding="async"
         />
-      </a>
+      </figure>
     </section>
   </article>
 </BaseLayout>
