@@ -185,11 +185,27 @@ a.frame:focus-visible,
   text-align: center;
 }
 
-.site-logo img {
-  display: inline-block;
-  width: auto;
-  height: 60px;
+/* Logo (inline SVG) */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink, #222); /* il logo prende questo colore */
 }
+
+.site-logo__svg {
+  display: block;
+  height: 60px;
+  width: auto;
+  fill: currentColor; /* fondamentale: il logo segue il colore della .site-logo */
+}
+
+@media (max-width: 520px) {
+  .site-logo__svg {
+    height: 48px;
+  }
+}
+
 
 .site-nav {
   margin-top: 1.25rem;

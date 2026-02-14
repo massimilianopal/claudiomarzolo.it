@@ -1,5 +1,4 @@
 .prose {
-  max-width: 76ch;
   color: var(--ink);
   font-size: clamp(1.03rem, 0.97rem + 0.22vw, 1.12rem);
   line-height: 1.8;

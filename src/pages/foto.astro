@@ -226,8 +226,9 @@ function getDimensions(filename: string): { width: number; height: number } {
   <article class="page photo-page">
     <header class="page-head">
       <h1>Galleria Fotografica</h1>
-      <hr />
+   
     </header>
+
 
     <figure class="hero frame">
       <img
@@ -239,6 +240,7 @@ function getDimensions(filename: string): { width: number; height: number } {
         decoding="async"
       />
     </figure>
+<hr class="photo-block__rule" />
 
     {galleries.map((section, idx) => {
       const subtitle = Array.isArray(section.subtitle) ? section.subtitle : section.subtitle ? [section.subtitle] : [];
