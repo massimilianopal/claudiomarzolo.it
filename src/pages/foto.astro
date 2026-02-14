@@ -286,9 +286,6 @@ function toOriginal(filename: string): string {
     })}
   </article>
 
-  <script type="module">
-  import { initLightbox } from "/src/scripts/glightbox-init.js";
+  <script type="module" src={Astro.resolve("../scripts/lightbox.ts")}></script>
 
-  initLightbox({ selector: ".photo-page .glightbox" });
-</script>
 </BaseLayout>

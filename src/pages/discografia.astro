@@ -246,12 +246,6 @@ function toOriginalPath(path: string): string {
     </div>
   </article>
 
-<script type="module">
-  import { initLightbox } from "/src/scripts/glightbox-init.js";
+<<script type="module" src={Astro.resolve("../scripts/lightbox.ts")}></script>
 
- initLightbox({
-    selector: ".disco-page .glightbox",
-    captions: false,
-  });
-</script>
 </BaseLayout>
