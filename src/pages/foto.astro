@@ -286,6 +286,9 @@ function toOriginal(filename: string): string {
     })}
   </article>
 
-  <script type="module" src={Astro.resolve("../scripts/lightbox.js")}></script>
+<script type="module" is:inline>
+  import "../scripts/lightbox.js";
+</script>
+
 
 </BaseLayout>
