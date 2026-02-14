@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "glightbox/dist/css/glightbox.css";
 
 const galleries = [
   {
     title: "Quintetto Imago Feat. Claudio Marzolo “Cinema d’Ascolto – Ennio Morricone”",
     subtitle: [
-      "Piazza San Franco – Francavilla al Mare (CH) 02/08/2021",
-      "Con la speciale partecipazione dell’oboista M° Carlo Romano",
+      "Piazza San Franco - Francavilla al Mare (CH) 02/08/2021",
+      "Con la speciale partecipazione dell'oboista M° Carlo Romano",
     ],
     images: [
       "claudio-marzolo-cinema-dascolto-ennio-morricone1-194x300.jpg",
@@ -220,6 +221,10 @@ function getDimensions(filename: string): { width: number; height: number } {
   if (!match) return { width: 300, height: 200 };
   return { width: Number(match[1]), height: Number(match[2]) };
 }
+
+function toOriginal(filename: string): string {
+  return filename.replace(/-\d+x\d+(?=\.(?:jpg|jpeg|png|webp|avif)$)/i, "");
+}
 ---
 
 <BaseLayout title="Foto" lang="it">
@@ -261,7 +266,7 @@ function getDimensions(filename: string): { width: number; height: number } {
             {section.images.map((img) => {
               const dim = getDimensions(img);
               return (
-                <a class="photo-frame frame" role="listitem" href={`/img/${img}`} target="_blank" rel="noreferrer">
+                <a class="photo-frame frame glightbox" role="listitem" href={`/img/${toOriginal(img)}`} data-gallery="foto">
                   <img
                     src={`/img/${img}`}
                     alt=""
@@ -280,4 +285,10 @@ function getDimensions(filename: string): { width: number; height: number } {
       );
     })}
   </article>
+
+  <script type="module">
+  import { initLightbox } from "/src/scripts/glightbox-init.js";
+
+  initLightbox({ selector: ".photo-page .glightbox" });
+</script>
 </BaseLayout>
