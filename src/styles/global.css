@@ -657,58 +657,27 @@ a.frame:focus-visible,
   object-fit: contain; /* niente stretching */
 }
 
-.equip-page__statement {
-  margin: 1.75rem auto 1rem;
-  max-width: 62ch;
+.equip-page__bow {
+  margin: 1.75rem auto 0;
+  max-width: 640px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
-  line-height: 1.34;
-  font-size: clamp(0.96rem, 0.82rem + 0.6vw, 1.18rem);
 }
 
-.equip-page__prose {
-  margin: 0.7rem auto 1.5rem;
-}
-
-.equip-page__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0 2.25rem;
-}
-
-.equip-page__grid .equip-media {
-  width: 100%;
+.equip-page__bow-frame {
   margin: 0;
 }
 
-.equip-page__grid .equip-media img {
-  display: block;
+.equip-page__bow-frame img {
   width: 100%;
   height: auto;
 }
 
-.equip-page__grid .frame {
-  width: 100%;
+.equip-page__bow-caption {
+  margin-bottom: 1.2rem;
 }
 
 @media (max-width: 780px) {
   .equip-page__instruments {
-    grid-template-columns: 1fr;
-  }
-
-  .equip-page__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 780px) {
-  .equip-page__instruments {
-    grid-template-columns: 1fr;
-  }
-
-  .equip-page__grid {
     grid-template-columns: 1fr;
   }
 
@@ -742,11 +711,12 @@ a.frame:focus-visible,
 }
 
 .photo-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
+  align-items: center;
   justify-content: center;
   margin: 0 0 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 }
 
 .photo-page {
@@ -755,6 +725,7 @@ a.frame:focus-visible,
 
 .photo-page .photo-frame {
   display: block;
+  flex: 0 1 300px;
   width: 100%;
   max-width: 320px;
   height: var(--photo-thumb-height);
@@ -815,8 +786,7 @@ a.frame:focus-visible,
 
 @media (max-width: 860px) {
   .home-bio,
-  .equip-page__instruments,
-  .equip-page__grid {
+  .equip-page__instruments {
     grid-template-columns: 1fr;
   }
 }
@@ -851,8 +821,7 @@ a.frame:focus-visible,
     height: 230px;
   }
 
-  .album-entry__covers,
-  .photo-grid {
+  .album-entry__covers {
     grid-template-columns: 1fr;
   }
 
